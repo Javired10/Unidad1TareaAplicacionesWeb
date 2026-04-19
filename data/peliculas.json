@@ -2,25 +2,134 @@
   {
     "id": 1,
     "titulo": "Dune",
+    "generos": [
+      "Ciencia ficción",
+      "Aventura"
+    ],
     "imagen": "dune.jpg",
-    "genero": "Aventura",
-    "sinopsis": "Un joven emprende una misión para salvar su mundo.",
-    "trailer": "https://www.youtube.com/embed/mSY_NbSmaUI"
+    "sinopsis": "En un futuro lejano, el duque Leto Atreides acepta la administración del peligroso planeta desértico Arrakis, la única fuente de la sustancia más valiosa del universo, la melange (también conocida como 'especia'). Esta droga extiende la vida humana, proporciona niveles de pensamiento sobrehumano y hace posible el viaje interestelar al permitir que los navegantes de la Cofradía Espacial doblen el espacio de forma segura. A pesar de saber que la oportunidad es una trampa intricada planeada por sus enemigos, los Harkonnen, Leto lleva a su concubina bene gesserit, a su joven hijo y heredero Paul, y al más fiable de sus consejeros a Arrakis.",
+    "trailer": "https://www.youtube.com/embed/mSY_NbSmaUI",
+    "estreno": "2021-10-22T00:00:00Z",
+    "precios": {
+      "estreno": 15,
+      "normal": 10
+    }
   },
   {
     "id": 2,
     "titulo": "50 primeras citas",
+    "generos": [
+      "Comedia",
+      "Romance"
+    ],
     "imagen": "50-primeras-citas.jpg",
-    "genero": "Comedia",
-    "sinopsis": "Henry se enamora de Lucy, una mujer con pérdida de memoria a corto plazo.",
-    "trailer": "https://www.youtube.com/embed/17KJk3ErIx0"
+    "sinopsis": "Henry Roth es un veterinario biólogo marino que vive en Hawái y que disfruta de citas sin compromiso con mujeres de vacaciones. Sin embargo, cuando conoce a Lucy Whitmore, desarrolla una conexión genuina con ella. Al día siguiente, para su gran sorpresa, ella no tiene ni idea de quién es él. Henry descubre que Lucy sufre un raro trastorno neurológico conocido como amnesia anterógrada, causado por un accidente automovilístico ocurrido un año atrás. Como consecuencia de esto, cada noche, mientras duerme, toda la memoria de Lucy sobre los acontecimientos ocurridos durante el día se borra, por lo que Henry debe conquistarla cada día de su vida.",
+    "trailer": "https://www.youtube.com/embed/17KJk3ErIx0",
+    "estreno": "2004-02-13T00:00:00Z",
+    "precios": {
+      "estreno": 12,
+      "normal": 8
+    }
   },
   {
     "id": 3,
-    "titulo": "Batman Caballero de la Noche",
+    "titulo": "Batman: Caballero de la Noche",
+    "generos": [
+      "Acción",
+      "Crimen",
+      "Drama"
+    ],
     "imagen": "batman-caballero-de-la-noche.webp",
-    "genero": "Acción",
-    "sinopsis": "La película comienza con el violento robo de uno de los bancos de la mafia por una banda de payasos.",
-    "trailer": "https://www.youtube.com/embed/dzQtWkpc2-c"
+    "sinopsis": "Con la ayuda del teniente Jim Gordon y el nuevo fiscal del distrito Harvey Dent, Batman decide destruir para siempre el crimen organizado en Gotham. Al principio asestan un duro golpe a las mafias que operan en la ciudad, pero un peligro insospechado surge de las sombras. Un joven villano, misterioso, sádico y aterrador, que responde al nombre del Joker, se ha propuesto sumir la ciudad en el caos más absoluto. Batman se verá forzado a cruzar repetidamente la fina línea que separa el heroísmo del vigilantismo para evitar que Gotham sea completamente destruida y consumida en la anarquía por el Joker.",
+    "trailer": "https://www.youtube.com/embed/dzQtWkpc2-c",
+    "estreno": "2008-07-18T00:00:00Z",
+    "precios": {
+      "estreno": 14,
+      "normal": 9
+    }
+  },
+  {
+    "id": 4,
+    "titulo": "Inception",
+    "generos": [
+      "Ciencia ficción",
+      "Acción",
+      "Suspenso"
+    ],
+    "imagen": "Inception.jpg",
+    "sinopsis": "Dom Cobb es un ladrón experto y hábil arte de la extracción: roba valiosos secretos de las profundidades del subconsciente durante el estado de sueño, cuando la mente es más vulnerable. Su excepcional habilidad lo ha convertido en un codiciado jugador en el traicionero mundo del espionaje corporativo, pero al mismo tiempo lo ha hecho un fugitivo internacional, y ha tenido que sacrificar todo lo que le importaba. Ahora a Cobb se le ofrece una oportunidad para redimirse. Con un último trabajo podría recuperar su vida anterior pero solo si logra lo imposible: el origen (la incepción) o inserción de una idea en la mente de una persona.",
+    "trailer": "https://www.youtube.com/embed/YoHD9XEInc0",
+    "estreno": "2010-07-16T00:00:00Z",
+    "precios": {
+      "estreno": 15,
+      "normal": 10
+    }
+  },
+  {
+    "id": 5,
+    "titulo": "Interstellar",
+    "generos": [
+      "Ciencia ficción",
+      "Aventura",
+      "Drama"
+    ],
+    "imagen": "interstellar.jpg",
+    "sinopsis": "En un futuro donde la humanidad está luchando por sobrevivir debido a una escasez global de cultivos que causa el Dust Bowl y la muerte gradual de la Tierra, un equipo de exploradores viaja a través de un agujero de gusano cerca de Saturno en busca de un nuevo planeta habitable para la raza humana. Liderado por el valiente ex-piloto de la NASA, Cooper, el equipo debe tomar la difícil decisión de dejar atrás a sus familias en la Tierra, sabiendo que el tiempo pasará más lento para los exploradores que para las personas en la Tierra. Su viaje es la última oportunidad desesperada para la humanidad.",
+    "trailer": "https://www.youtube.com/embed/zSWdZVtXT7E",
+    "estreno": "2014-11-07T00:00:00Z",
+    "precios": {
+      "estreno": 16,
+      "normal": 11
+    }
+  },
+  {
+    "id": 6,
+    "titulo": "Avatar: El Camino del Agua",
+    "generos": [
+      "Ciencia ficción",
+      "Acción",
+      "Aventura"
+    ],
+    "imagen": "avatar-2.jpg",
+    "sinopsis": "Más de una década después de los eventos de la primera película, Jake Sully vive feliz con su nueva familia en el planeta de Pandora. Sin embargo, la paz se ve interrumpida cuando una antigua amenaza conocida regresa y vuelve a causar estragos para cumplir con el trabajo inconcluso que empezaron años atrás, obligando a Jake, Neytiri y sus hijos a abandonar su hogar. Para proteger a los suyos, deberán explorar las vastas regiones acuáticas de Pandora y buscar la ayuda de la tribu Metkayina. Una aventura deslumbrante donde tendrán que librar nuevas e intensas batallas contra la avaricia de la humanidad invasora.",
+    "trailer": "https://www.youtube.com/embed/d9MyW72ELq0",
+    "estreno": "2026-03-25T00:00:00Z",
+    "precios": {
+      "estreno": 18,
+      "normal": 12
+    }
+  },
+  {
+    "id": 7,
+    "titulo": "The Matrix",
+    "generos": [
+      "Ciencia ficción",
+      "Acción"
+    ],
+    "imagen": "matrix.jpg",
+    "sinopsis": "Thomas A. Anderson es un programador informático que lleva una doble vida como pirata informático bajo el seudónimo de Neo. Él descubre la verdad sobre la realidad en la que vive: una prisión diseñada por máquinas avanzadas, que se aprovechan de la energía corporal de los humanos. Como resultado, es llevado a las profundidades del mundo subyacente para conocer al líder de un grupo rebelde de hackers, Morfeo. Allí se da cuenta de que las máquinas dominan la Tierra, manteniéndola conectada en un sistema elaborado conocido como Matrix. Neo tendrá que enfrentarse a los temibles Agentes para liberar de la esclavitud a la humanidad entera.",
+    "trailer": "https://www.youtube.com/embed/vKQi3bBA1y8",
+    "estreno": "1999-03-31T00:00:00Z",
+    "precios": {
+      "estreno": 10,
+      "normal": 7
+    }
+  },
+  {
+    "id": 8,
+    "titulo": "Star Wars: El Ascenso de Skywalker",
+    "generos": [
+      "Acción",
+      "Ciencia ficción",
+      "Aventura"
+    ],
+    "imagen": "star-wars.jpg",
+    "sinopsis": "En la fascinante conclusión de la saga Skywalker, la Resistencia enfrenta nuevamente a la Primera Orden, liderada por el Líder Supremo Kylo Ren. Mientras tanto, el antiguo Emperador Palpatine emerge misteriosamente de las sombras con una gran flota. Rey y sus amigos se embarcan en un viaje desesperado por la galaxia, buscando el antiguo planeta de los Sith para detener la inminente perdición. Aquí, nacerán nuevas leyendas y la última batalla por la libertad se decidirá de una vez por todas en un enfrentamiento épico.",
+    "trailer": "https://www.youtube.com/embed/8Qn_spdM5Zg",
+    "estreno": "2026-05-20T00:00:00Z",
+    "precios": {
+      "estreno": 20,
+      "normal": 14
+    }
   }
 ]
