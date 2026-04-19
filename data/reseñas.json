@@ -1,0 +1,67 @@
+[
+  {
+    "pelicula_id": 1,
+    "reseñas": [
+      { "autor": "CarlosM", "puntuacion": 4, "comentario": "Excelente adaptación del libro, los efectos son increíbles.", "fecha": "2024-01-15" },
+      { "autor": "CineFan99", "puntuacion": 5, "comentario": "Una obra maestra visual de Denis Villeneuve.", "fecha": "2023-11-20" },
+      { "autor": "SandraD", "puntuacion": 3, "comentario": "Visualmente hermosa pero el ritmo es muy lento para mi gusto.", "fecha": "2024-02-05" }
+    ]
+  },
+  {
+    "pelicula_id": 2,
+    "reseñas": [
+      { "autor": "RomanceLover", "puntuacion": 5, "comentario": "Una de las mejores comedias románticas, te hace reír y llorar.", "fecha": "2023-05-12" },
+      { "autor": "LuisG", "puntuacion": 4, "comentario": "Adam Sandler en su mejor época. Muy recomendable.", "fecha": "2023-08-30" },
+      { "autor": "AnaP", "puntuacion": 4, "comentario": "Dulce y divertida.", "fecha": "2024-03-10" }
+    ]
+  },
+  {
+    "pelicula_id": 3,
+    "reseñas": [
+      { "autor": "BatFan", "puntuacion": 5, "comentario": "El Joker de Heath Ledger es inigualable. Épica.", "fecha": "2023-07-22" },
+      { "autor": "Hero22", "puntuacion": 5, "comentario": "Posiblemente la mejor película de superhéroes de todos los tiempos.", "fecha": "2024-01-02" },
+      { "autor": "MiguelK", "puntuacion": 4, "comentario": "Oscura, tensa, brillante guión. Un clásico imperdible.", "fecha": "2024-04-10" }
+    ]
+  },
+  {
+    "pelicula_id": 4,
+    "reseñas": [
+      { "autor": "BrainTwist", "puntuacion": 5, "comentario": "Te deja pensando por días. El concepto de los sueños es impresionante.", "fecha": "2023-09-14" },
+      { "autor": "ChrisJ", "puntuacion": 4, "comentario": "Película compleja pero fascinante, requiere múltiples visualizaciones.", "fecha": "2023-10-01" },
+      { "autor": "DianaW", "puntuacion": 5, "comentario": "Los efectos especiales y la banda sonora son de otro mundo.", "fecha": "2024-02-18" }
+    ]
+  },
+  {
+    "pelicula_id": 5,
+    "reseñas": [
+      { "autor": "AstroNerd", "puntuacion": 5, "comentario": "La representación del agujero negro es magistral.", "fecha": "2023-03-05" },
+      { "autor": "SciFiFan", "puntuacion": 5, "comentario": "La banda sonora de Hans Zimmer te pone los pelos de punta.", "fecha": "2023-06-25" },
+      { "autor": "FelipeR", "puntuacion": 4, "comentario": "Larga pero vale cada minuto. Muy emotiva al final.", "fecha": "2024-01-20" }
+    ]
+  },
+  {
+    "pelicula_id": 6,
+    "reseñas": [
+      { "autor": "PandoraExplorer", "puntuacion": 4, "comentario": "El CGI del agua es lo más hiperrealista que he visto en el cine.", "fecha": "2026-03-30" },
+      { "autor": "JoseM", "puntuacion": 5, "comentario": "Más emocional que la primera, una experiencia en 3D que hay que vivir.", "fecha": "2026-04-05" },
+      { "autor": "CamiZ", "puntuacion": 3, "comentario": "Visualmente impecable, pero la historia se siente algo reciclada.", "fecha": "2026-04-12" }
+    ]
+  },
+  {
+    "pelicula_id": 7,
+    "reseñas": [
+      { "autor": "NeoOne", "puntuacion": 5, "comentario": "Redefinió el cine de acción para siempre.", "fecha": "2023-11-11" },
+      { "autor": "TechGuru", "puntuacion": 4, "comentario": "Conceptualmente adelantada a su tiempo. Sigue vigente.", "fecha": "2024-02-28" },
+      { "autor": "SofiaL", "puntuacion": 5, "comentario": "Keanu Reeves en uno de sus papeles más icónicos.", "fecha": "2024-04-05" },
+      { "autor": "AgentSmith", "puntuacion": 4, "comentario": "Inevitables, señor Anderson.", "fecha": "2024-04-15" }
+    ]
+  },
+  {
+    "pelicula_id": 8,
+    "reseñas": [
+      { "autor": "JediMaster", "puntuacion": 4, "comentario": "Un final digno lleno de nostalgia para la saga Skywalker.", "fecha": "2026-05-22" },
+      { "autor": "LukeFan", "puntuacion": 3, "comentario": "Hubo algunas conveniencias en el guión, pero las batallas son épicas.", "fecha": "2026-05-25" },
+      { "autor": "ReySky", "puntuacion": 5, "comentario": "Me encantó el desenlace y el regreso del gran villano. Muy emocionante.", "fecha": "2026-06-01" }
+    ]
+  }
+]

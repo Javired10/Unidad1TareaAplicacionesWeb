@@ -67,10 +67,98 @@
             const peli = peliculas.find((p) => p.id == id);
             if (peli) {
               $("#titulo").text(peli.titulo);
-              $("#poster").attr("src", "../img/" + peli.imagen);
+              const imgUrl = peli.imagen.startsWith('http') ? peli.imagen : "../img/" + peli.imagen;
+              $("#poster").attr("src", imgUrl);
               $("#sinopsis").text(peli.sinopsis);
               $("#trailer").attr("src", peli.trailer);
-              $("#genero").text(peli.genero);
+              
+              const generosHTML = peli.generos.map(g => `<span class="badge bg-secondary me-1 py-2 px-3">${g}</span>`).join('');
+              $("#genero").replaceWith(`<div id="generos-container" class="mt-2">${generosHTML}</div>`);
+              
+              const fecha = new Date(peli.estreno);
+              const fechaStr = fecha.toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
+              
+              let estado = "En cartelera";
+              let badgeClass = "bg-primary";
+              let precioSugerido = peli.precios.normal;
+              const hoy = new Date();
+              
+              if (fecha > hoy) {
+                  estado = "Próximo Estreno";
+                  badgeClass = "bg-warning text-dark";
+                  precioSugerido = peli.precios.estreno;
+              } else if ((hoy - fecha) / (1000 * 3600 * 24) <= 30) {
+                  estado = "En Estreno";
+                  badgeClass = "bg-danger";
+                  precioSugerido = peli.precios.estreno;
+              }
+
+
+              // Agregar información de precios y fechas dinámicamente debajo de la sinopsis
+              const extrasHTML = `
+                <div class="card mt-4 border-0 bg-light shadow-sm">
+                  <div class="card-body">
+                    <ul class="list-group list-group-flush rounded">
+                      <li class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-bottom px-0">
+                         <strong>Estreno:</strong> <span>${fechaStr} <span class="badge ${badgeClass} ms-2">${estado}</span></span>
+                      </li>
+                      <li class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-bottom px-0">
+                         <strong>Precio Estreno:</strong> <span class="text-secondary">$${peli.precios.estreno.toFixed(2)}</span>
+                      </li>
+                      <li class="list-group-item d-flex justify-content-between align-items-center bg-transparent px-0">
+                         <strong>Precio Normal:</strong> <span class="text-secondary">$${peli.precios.normal.toFixed(2)}</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <!-- Contenedor estandarizado para las reseñas -->
+                <div class="card mt-4 border-0 shadow-sm">
+                  <div class="card-body">
+                    <h5 class="card-title fw-bold mb-3 border-bottom pb-2">Opiniones de la Audiencia</h5>
+                    <div id="caja-resenas">
+                      <div class="text-center text-muted col-12 my-3">
+                         <div class="spinner-border spinner-border-sm mr-2" role="status"></div>
+                         <small class="ms-2">Cargando reseñas...</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              `;
+              $("#sinopsis").after(extrasHTML);
+
+              // Disparamos la petición extra para consultar el archivo de opiniones
+              $.ajax({
+                url: "../data/reseñas.json",
+                method: "GET",
+                dataType: "json",
+                success: function (dataResenas) {
+                  const resenasDePeli = dataResenas.find((r) => r.pelicula_id == id);
+                  if (resenasDePeli && resenasDePeli.reseñas.length > 0) {
+                      let htmlResenas = "";
+                      resenasDePeli.reseñas.forEach(res => {
+                          const estrellasCompletas = "★".repeat(res.puntuacion);
+                          const estrellasVacias = "☆".repeat(5 - res.puntuacion);
+                          htmlResenas += `
+                             <div class="mb-3 pb-2 border-bottom">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <strong class="text-primary">${res.autor}</strong>
+                                    <span class="text-warning fs-5" aria-label="${res.puntuacion} de 5 estrellas">${estrellasCompletas}${estrellasVacias}</span>
+                                </div>
+                                <p class="mb-1 mt-2 text-dark fs-6">${res.comentario}</p>
+                                <small class="text-muted">${res.fecha}</small>
+                             </div>
+                          `;
+                      });
+                      $("#caja-resenas").html(htmlResenas).hide().fadeIn(500);
+                  } else {
+                      $("#caja-resenas").html('<p class="text-muted">Aún no hay reseñas para esta película. ¡Sé el primero en opinar!</p>');
+                  }
+                },
+                error: function () {
+                  $("#caja-resenas").html('<p class="text-danger small">Experimentamos problemas al extraer las reseñas actuales.</p>');
+                }
+              });
             } else {
               mostrarError();
             }

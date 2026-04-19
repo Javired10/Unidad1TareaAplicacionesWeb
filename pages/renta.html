@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Rentar Película - CinePlus</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="bg-light">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="../index.html">CinePlus</a>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="../index.html">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link active" href="renta.html">Renta</a></li>
+          <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container pb-5 mt-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="card shadow-lg border-0">
+          <div class="card-header bg-primary text-white p-3">
+            <h4 class="mb-0">Ticket de Renta Presencial / Virtual</h4>
+          </div>
+          <div class="card-body p-5">
+            <!-- Empezamos aquí el formulario de registro de la transacción -->
+            <form id="rentaForm">
+              
+              <!-- Recopilación de los datos que nos importan para la renta -->
+              <div class="mb-4">
+                <label for="nombreCliente" class="form-label fw-bold">Nombre Completo del Cliente</label>
+                <input type="text" class="form-control form-control-lg" id="nombreCliente" placeholder="Ej. Juan Pérez García" required>
+              </div>
+
+              <!-- Este elemento select en un principio está vacío, inyectaremos JS para darle su lista -->
+              <div class="mb-4">
+                <label for="peliculaSelect" class="form-label fw-bold">Seleccionar la Película</label>
+                <select class="form-select form-select-lg" id="peliculaSelect" required>
+                  <option value="" selected disabled>Cargando catálogo en línea...</option>
+                </select>
+              </div>
+
+              <div class="mb-4">
+                <label for="diasRenta" class="form-label fw-bold">Número de Días Dispuestos para la Renta</label>
+                <input type="number" class="form-control form-control-lg" id="diasRenta" min="1" max="15" value="1" required>
+                <div class="form-text text-muted">Aviso: El límite virtual de arriendo son 15 días continuos.</div>
+              </div>
+
+              <div class="mb-5">
+                <label class="form-label fw-bold d-block mb-3">Método de Pago</label>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="metodoPago" id="pagoTarjeta" value="Tarjeta de Crédito / Débito" required checked>
+                  <label class="form-check-label" for="pagoTarjeta">Tarjeta Visa / Mastercard</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="metodoPago" id="pagoPaypal" value="Plataforma de PayPal">
+                  <label class="form-check-label" for="pagoPaypal">Transacción por PayPal</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="metodoPago" id="pagoEfectivo" value="Efectivo en Caja">
+                  <label class="form-check-label" for="pagoEfectivo">Pago localizado en Caja</label>
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-success fw-bold w-100 fs-5 py-3 shadow-sm rounded-3">Confirmar Transacción y Ver Resumen</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- El Modal HTML donde mostraremos el Ticket. Permanece invisible hasta tener información -->
+  <div class="modal fade border-0" id="ticketModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content shadow-lg border-0">
+        <div class="modal-header bg-success text-white border-0">
+          <h5 class="modal-title fw-bold">Ticket de Confirmación</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4 bg-light">
+          <div class="text-center mb-4 pb-2 border-bottom">
+             <i class="fs-1 text-success">✔</i>
+             <h4 class="mt-2 text-success fw-bold">¡Operación Procesada!</h4>
+             <p class="text-muted small">Este documento sirve como tu comprobante de renta.</p>
+          </div>
+          
+          <ul class="list-group list-group-flush border shadow-sm">
+            <li class="list-group-item bg-white py-3"><strong>A nombre de:</strong> <span id="resNombre" class="text-secondary float-end"></span></li>
+            <li class="list-group-item bg-white py-3"><strong>Título de Película:</strong> <span id="resPelicula" class="text-secondary float-end text-end" style="max-width: 60%"></span></li>
+            <li class="list-group-item bg-white py-3"><strong>Tiempo estipulado:</strong> <span class="text-secondary float-end"><span id="resDias"></span> días</span></li>
+            <li class="list-group-item bg-white py-3"><strong>Forma de pago:</strong> <span id="resMetodo" class="text-secondary float-end"></span></li>
+            <li class="list-group-item fs-5 bg-white d-flex py-4 justify-content-between">
+              <strong>Total Cobrado:</strong> 
+              <strong class="text-success fs-4" id="resTotal"></strong>
+            </li>
+          </ul>
+        </div>
+        <div class="modal-footer bg-white border-0">
+          <button type="button" class="btn btn-secondary w-100 fw-bold py-2" data-bs-dismiss="modal">Finalizar y volver al Menú Principal</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Integrando JQuery y la capa JS de Bootstrap necesaria para abrir modales dinámicos -->
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <script>
+    $(document).ready(function() {
+        let repositorioPeliculas = [];
+
+        // Invocamos el JSON existente mediante AJAX para popular dinámicamente nuestra tag SELECT
+        $.ajax({
+            url: "../data/peliculas.json",
+            method: "GET",
+            dataType: "json",
+            success: function(peliculasJSON) {
+                repositorioPeliculas = peliculasJSON;
+                
+                let opcionesTag = '<option value="" selected disabled>Por favor, selecciona una película...</option>';
+                
+                repositorioPeliculas.forEach(cineObject => {
+                    // Calculamos matemáticamente si la película se considera 'Estreno' (ha pasado o <= 30 días)
+                    const diaEmision = new Date(cineObject.estreno);
+                    const elDiaDeHoy = new Date();
+                    
+                    const cumpleEstreno = diaEmision > elDiaDeHoy || ((elDiaDeHoy - diaEmision) / (1000 * 3600 * 24) <= 30);
+                    
+                    // Colocamos una etiqueta para asistir visualmente al cliente en el selector
+                    const etiquetaVisual = cumpleEstreno ? " | (PRECIO ESTRENO)" : "";
+                    opcionesTag += `<option value="${cineObject.id}">${cineObject.titulo}${etiquetaVisual}</option>`;
+                });
+                
+                $("#peliculaSelect").html(opcionesTag);
+            },
+            error: function() {
+                $("#peliculaSelect").html('<option value="" disabled>Lamentablemente ocurrió un error al cargar el catálogo.</option>');
+            }
+        });
+
+        // Este escuchador atajará el momento en el que el cliente haga clic para Enviar
+        $("#rentaForm").on('submit', function(eventoBrowser) {
+            
+            // Esto bloquea que la página recargue su vista y pierda todos nuestros cálculos
+            eventoBrowser.preventDefault(); 
+
+            // Tomamos lo que las personas ingresaron
+            const textoNombre = $("#nombreCliente").val();
+            const idEscogido = $("#peliculaSelect").val();
+            const numeroDiasMencionados = parseInt($("#diasRenta").val(), 10);
+            const opcionPagoMarcada = $("input[name='metodoPago']:checked").val();
+            
+            if (!idEscogido) {
+                alert("Debes elegir alguna película de la lista para proceder con la renta.");
+                return;
+            }
+
+            // Realizamos la misma regla matemática para saber con certeza su precio correcto
+            const peliBuscada = repositorioPeliculas.find(p => p.id == idEscogido);
+            
+            const hoy = new Date();
+            const validezFecha = new Date(peliBuscada.estreno);
+            const esNuevo = validezFecha > hoy || ((hoy - validezFecha) / (1000 * 3600 * 24) <= 30);
+            
+            let multiplicadorBase = esNuevo ? peliBuscada.precios.estreno : peliBuscada.precios.normal;
+            
+            let precioDeducido = multiplicadorBase * numeroDiasMencionados;
+
+            // Inyectamos nuestros resultados y texto capturado en el HTML del Ticket (en los <span>)
+            $("#resNombre").text(textoNombre);
+            $("#resPelicula").text(peliBuscada.titulo);
+            $("#resDias").text(numeroDiasMencionados);
+            $("#resMetodo").text(opcionPagoMarcada);
+            $("#resTotal").text("$ " + precioDeducido.toFixed(2));
+
+            // Utilizamos el objeto Modal de Bootstrap JS para mostrar el div flotante al centro
+            const pantallaModalObj = new bootstrap.Modal(document.getElementById('ticketModal'));
+            pantallaModalObj.show();
+        });
+
+        // Configuro un evento simple para devolver a la persona a la pantalla inicial tras darle a cerrar botón
+        $('#ticketModal').on('hidden.bs.modal', function () {
+            window.location.href = "../index.html";
+        });
+    });
+  </script>
+</body>
+</html>
