@@ -1,4 +1,22 @@
 $(document).ready(function () {
+    // 0. Alerta de bienvenida (Solo una vez usando localStorage)
+    if (!localStorage.getItem('welcomeShown')) {
+        const welcomeBanner = `
+            <div class="alert alert-dismissible fade show border-0 shadow-sm mx-auto my-3 animate-fade-in" 
+                 role="alert" 
+                 style="max-width: 800px; background: linear-gradient(to right, #4f46e5, #0ea5e9); color: white;">
+                <div class="d-flex align-items-center">
+                    <div class="fs-2 me-3">👋</div>
+                    <div>
+                        <h5 class="alert-heading fw-bold mb-1">¡Bienvenido a CinePlus!</h5>
+                        <p class="mb-0 opacity-90">Explora lo mejor del séptimo arte con nuestra nueva interfaz premium.</p>
+                    </div>
+                </div>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>`;
+        $('#welcome-alert-container').html(welcomeBanner);
+        localStorage.setItem('welcomeShown', 'true');
+    }
     // 1. Mostrar de inmediato el contenedor del spinner en la pantalla
     $("#spinner-container").removeClass("d-none");
 

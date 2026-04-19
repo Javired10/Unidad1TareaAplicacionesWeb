@@ -7,11 +7,14 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
 </head>
-<body class="bg-light">
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="../index.html">CinePlus</a>
-      <div class="collapse navbar-collapse">
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="../index.html">CINEPLUS</a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link" href="../index.html">Inicio</a></li>
           <li class="nav-item"><a class="nav-link active" href="renta.html">Renta</a></li>
@@ -21,93 +24,99 @@
     </div>
   </nav>
 
-  <div class="container pb-5 mt-5">
-    <div class="row justify-content-center">
-      <div class="col-lg-8">
-        <div class="card shadow-lg border-0">
-          <div class="card-header bg-primary text-white p-3">
-            <h4 class="mb-0">Ticket de Renta Presencial / Virtual</h4>
-          </div>
-          <div class="card-body p-5">
-            <!-- Empezamos aquí el formulario de registro de la transacción -->
-            <form id="rentaForm">
-              
-              <!-- Recopilación de los datos que nos importan para la renta -->
-              <div class="mb-4">
-                <label for="nombreCliente" class="form-label fw-bold">Nombre Completo del Cliente</label>
-                <input type="text" class="form-control form-control-lg" id="nombreCliente" placeholder="Ej. Juan Pérez García" required>
-              </div>
-
-              <!-- Este elemento select en un principio está vacío, inyectaremos JS para darle su lista -->
-              <div class="mb-4">
-                <label for="peliculaSelect" class="form-label fw-bold">Seleccionar la Película</label>
-                <select class="form-select form-select-lg" id="peliculaSelect" required>
-                  <option value="" selected disabled>Cargando catálogo en línea...</option>
-                </select>
-              </div>
-
-              <div class="mb-4">
-                <label for="diasRenta" class="form-label fw-bold">Número de Días Dispuestos para la Renta</label>
-                <input type="number" class="form-control form-control-lg" id="diasRenta" min="1" max="15" value="1" required>
-                <div class="form-text text-muted">Aviso: El límite virtual de arriendo son 15 días continuos.</div>
-              </div>
-
-              <div class="mb-5">
-                <label class="form-label fw-bold d-block mb-3">Método de Pago</label>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="metodoPago" id="pagoTarjeta" value="Tarjeta de Crédito / Débito" required checked>
-                  <label class="form-check-label" for="pagoTarjeta">Tarjeta Visa / Mastercard</label>
+  <main>
+    <div class="container py-5">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="card shadow-lg border-0 animate-fade-in">
+            <div class="card-header bg-primary text-white p-4">
+              <h4 class="mb-0 fw-bold">Ticket de Renta</h4>
+            </div>
+            <div class="card-body p-4 p-md-5">
+              <form id="rentaForm">
+                <div class="mb-4">
+                  <label for="nombreCliente" class="form-label fw-bold">Nombre Completo del Cliente</label>
+                  <input type="text" class="form-control form-control-lg" id="nombreCliente" placeholder="Ej. Juan Pérez" required>
                 </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="metodoPago" id="pagoPaypal" value="Plataforma de PayPal">
-                  <label class="form-check-label" for="pagoPaypal">Transacción por PayPal</label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="metodoPago" id="pagoEfectivo" value="Efectivo en Caja">
-                  <label class="form-check-label" for="pagoEfectivo">Pago localizado en Caja</label>
-                </div>
-              </div>
 
-              <button type="submit" class="btn btn-success fw-bold w-100 fs-5 py-3 shadow-sm rounded-3">Confirmar Transacción y Ver Resumen</button>
-            </form>
+                <div class="mb-4">
+                  <label for="peliculaSelect" class="form-label fw-bold">Seleccionar Película</label>
+                  <select class="form-select form-select-lg" id="peliculaSelect" required>
+                    <option value="" selected disabled>Cargando catálogo...</option>
+                  </select>
+                </div>
+
+                <div class="mb-4">
+                  <label for="diasRenta" class="form-label fw-bold">Días de Renta</label>
+                  <input type="number" class="form-control form-control-lg" id="diasRenta" min="1" max="15" value="1" required>
+                  <div class="form-text text-muted">Límite máximo de 15 días.</div>
+                </div>
+
+                <div class="mb-5">
+                  <label class="form-label fw-bold d-block mb-3">Método de Pago</label>
+                  <div class="d-flex flex-wrap gap-3">
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="metodoPago" id="pagoTarjeta" value="Tarjeta de Crédito / Débito" required checked>
+                      <label class="form-check-label" for="pagoTarjeta">Tarjeta</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="metodoPago" id="pagoPaypal" value="PayPal">
+                      <label class="form-check-label" for="pagoPaypal">PayPal</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="metodoPago" id="pagoEfectivo" value="Efectivo en Caja">
+                      <label class="form-check-label" for="pagoEfectivo">Efectivo</label>
+                    </div>
+                  </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary fw-bold w-100 fs-5 py-3 rounded-3 mt-2">Confirmar Transacción</button>
+              </form>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </main>
 
-  <!-- El Modal HTML donde mostraremos el Ticket. Permanece invisible hasta tener información -->
-  <div class="modal fade border-0" id="ticketModal" tabindex="-1" aria-hidden="true">
+  <!-- El Modal HTML donde mostraremos el Ticket -->
+  <div class="modal fade" id="ticketModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content shadow-lg border-0">
-        <div class="modal-header bg-success text-white border-0">
-          <h5 class="modal-title fw-bold">Ticket de Confirmación</h5>
+        <div class="modal-header bg-success text-white border-0 py-3">
+          <h5 class="modal-title fw-bold">¡Renta Exitosa!</h5>
           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body p-4 bg-light">
-          <div class="text-center mb-4 pb-2 border-bottom">
-             <i class="fs-1 text-success">✔</i>
-             <h4 class="mt-2 text-success fw-bold">¡Operación Procesada!</h4>
-             <p class="text-muted small">Este documento sirve como tu comprobante de renta.</p>
+        <div class="modal-body p-4">
+          <div class="text-center mb-4">
+             <div class="display-1 text-success mb-2">✓</div>
+             <p class="text-muted">Tu comprobante de renta digital.</p>
           </div>
           
-          <ul class="list-group list-group-flush border shadow-sm">
-            <li class="list-group-item bg-white py-3"><strong>A nombre de:</strong> <span id="resNombre" class="text-secondary float-end"></span></li>
-            <li class="list-group-item bg-white py-3"><strong>Título de Película:</strong> <span id="resPelicula" class="text-secondary float-end text-end" style="max-width: 60%"></span></li>
-            <li class="list-group-item bg-white py-3"><strong>Tiempo estipulado:</strong> <span class="text-secondary float-end"><span id="resDias"></span> días</span></li>
-            <li class="list-group-item bg-white py-3"><strong>Forma de pago:</strong> <span id="resMetodo" class="text-secondary float-end"></span></li>
-            <li class="list-group-item fs-5 bg-white d-flex py-4 justify-content-between">
-              <strong>Total Cobrado:</strong> 
-              <strong class="text-success fs-4" id="resTotal"></strong>
+          <ul class="list-group list-group-flush border rounded">
+            <li class="list-group-item d-flex justify-content-between"><strong>Cliente:</strong> <span id="resNombre" class="text-muted"></span></li>
+            <li class="list-group-item d-flex justify-content-between"><strong>Película:</strong> <span id="resPelicula" class="text-muted text-end"></span></li>
+            <li class="list-group-item d-flex justify-content-between"><strong>Días:</strong> <span class="text-muted"><span id="resDias"></span> días</span></li>
+            <li class="list-group-item d-flex justify-content-between"><strong>Pago:</strong> <span id="resMetodo" class="text-muted"></span></li>
+            <li class="list-group-item d-flex justify-content-between align-items-center bg-light mt-2 py-3">
+              <strong class="fs-5">Total:</strong> 
+              <strong class="text-success fs-3" id="resTotal"></strong>
             </li>
           </ul>
         </div>
-        <div class="modal-footer bg-white border-0">
-          <button type="button" class="btn btn-secondary w-100 fw-bold py-2" data-bs-dismiss="modal">Finalizar y volver al Menú Principal</button>
+        <div class="modal-footer border-0 p-4 pt-0">
+          <button type="button" class="btn btn-secondary w-100" data-bs-dismiss="modal">Cerrar y volver</button>
         </div>
       </div>
     </div>
   </div>
+
+  <footer class="text-center">
+    <div class="container">
+      <p class="mb-1 fw-bold">CinePlus &copy; 2024</p>
+      <small>Todos los derechos reservados. Tu cine favorito.</small>
+    </div>
+  </footer>
 
   <!-- Integrando JQuery y la capa JS de Bootstrap necesaria para abrir modales dinámicos -->
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
